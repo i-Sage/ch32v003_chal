@@ -58,8 +58,8 @@ enable bit is set — the same discipline as AUTOSAR BSW.
 
 | Module | File | Status |
 |---|---|---|
-| Reset and Clock Control | `include/ch32v003_hal/rcc.h` | working progress |
-| System Tick Timer | `include/ch32v003_hal/systick.h` | working progress |
+| Reset and Clock Control | `include/hal/rcc.h` | working progress |
+| System Tick Timer | `include/hal/systick.h` | working progress |
 | GPIO | — | Planned |
 | USART | — | Planned |
 | SPI | — | Planned |
