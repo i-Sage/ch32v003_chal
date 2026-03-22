@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.20)
 
 project(ch32v003_chal 
-	VERSION 1.0.0
+    VERSION 0.1.0
 	LANGUAGES C
     DESCRIPTION "MISRA C:2012 bare-metal HAL for the WCH CH32V003 (RISC-V RV32EC)"
 	HOMEPAGE_URL "https://github.com/i-Sage/ch32v003_chal"
