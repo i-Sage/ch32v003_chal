@@ -22,7 +22,7 @@ deliver the next instruction.
 
 RAM has no wait states. Code in RAM always runs at full CPU speed.
 
-```
+```text
 Flash execution at 48MHz:
 CPU: fetch → [wait] → execute → fetch → [wait] → execute
               ↑ stall                    ↑ stall
@@ -53,7 +53,7 @@ automatically at boot.
 
 ## When to use it
 
-### Use it for:
+Use it for:
 
 **Bit-banging protocols** — protocols like WS2812 (NeoPixel), DHT22,
 or 1-Wire require precise pin timing down to hundreds of nanoseconds.
@@ -145,7 +145,7 @@ static void pid_update(void)
 
 ---
 
-### Do NOT use it for:
+### Do NOT use it for
 
 **Initialisation code** — functions called once at startup have no
 timing requirements. Putting `RCC_Init_48mhz()` in `.highcode` wastes
@@ -165,7 +165,7 @@ regardless of whether they are currently running.
 Every byte of `.highcode` comes directly out of your 2KB RAM budget.
 Your RAM is divided as:
 
-```
+```text
 RAM (2048 bytes)
 ├── .highcode    ← permanent cost, resident from startup
 ├── .data        ← your initialised globals
@@ -176,7 +176,7 @@ RAM (2048 bytes)
 Check your `.map` file after building to see exactly how much RAM each
 section consumes:
 
-```
+```bash
 riscv32-unknown-elf-size firmware.elf
    text    data     bss     dec     hex filename
   4832     128     512    5472    1560 firmware.elf
@@ -193,7 +193,7 @@ The linker stores `.highcode` functions in flash (they have to live
 somewhere permanent). The startup file copies them to RAM before
 `main()` runs. This copy happens automatically — you never see it:
 
-```
+```text
 Power on
     │
     ▼
@@ -215,13 +215,13 @@ main() — .highcode functions are already in RAM, ready to call
 After building, inspect the map file to confirm your function landed
 in the `.highcode` section:
 
-```
+```bash
 riscv32-unknown-elf-objdump -h firmware.elf | grep highcode
 ```
 
 Or check the full symbol list:
 
-```
+```bash
 riscv32-unknown-elf-nm firmware.elf | grep ws2812
 ```
 

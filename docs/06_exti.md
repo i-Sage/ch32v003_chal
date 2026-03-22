@@ -57,7 +57,7 @@ PFIC_EnableIRQ(IRQ_EXTI7_0);
 GPIO pins are not connected directly to the PFIC. The EXTI
 controller sits between them:
 
-```
+```text
 GPIO pin (physical hardware)
         │
         ▼
@@ -83,7 +83,7 @@ EXTI line 3 corresponds to pin 3 on whichever port AFIO routes it to.
 You can have PA3, PC3, or PD3 — but only one of them can be the
 source of EXTI line 3 at a time. AFIO selects which.
 
-```
+```text
 EXTI line 0  →  pin 0 on the port selected by AFIO for line 0
 EXTI line 1  →  pin 1 on the port selected by AFIO for line 1
 ...
@@ -98,7 +98,7 @@ the same ISR at IRQ 20.
 
 ## The three-layer picture
 
-```
+```text
 Layer 1 — EXTI controller
           EXTI_ConfigLine() sets the edge and enables INTENR.
           Without this the GPIO edge goes nowhere.
@@ -178,7 +178,7 @@ This is the same as the EXTI line number.
 `edge` is one of:
 
 | Value | Triggers on |
-|---|---|
+| --- | --- |
 | `EXTI_EDGE_RISING` | Low → high transition |
 | `EXTI_EDGE_FALLING` | High → low transition |
 | `EXTI_EDGE_BOTH` | Any transition |
@@ -248,6 +248,7 @@ alias in `startup.S`. The `interrupt` attribute is required on the
 CH32V003 to emit `mret` at the end of the function.
 
 The pattern inside the ISR is always the same:
+
 1. Check which pin fired with `EXTI_GetFlag`
 2. Clear the flag immediately with `EXTI_ClearFlag`
 3. Do your work
@@ -449,7 +450,7 @@ higher priority.
 ## Edge selection guide
 
 | Situation | Recommended edge |
-|---|---|
+| --- | --- |
 | Button wired to GND with pull-up | `EXTI_EDGE_FALLING` — detects press |
 | Button wired to VCC with pull-down | `EXTI_EDGE_RISING` — detects press |
 | Detect both press and release | `EXTI_EDGE_BOTH` |

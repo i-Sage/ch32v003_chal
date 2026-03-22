@@ -54,7 +54,7 @@ AFIO_SetXxxRemap(remap_value);
 ## GPIO Ports
 
 | Enum | Port | Base address | RCC clock to enable |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | `GPIO_PORT_A` | PA | `0x40010800` | `RCC_PERIPH_GPIOA` |
 | `GPIO_PORT_C` | PC | `0x40011000` | `RCC_PERIPH_GPIOC` |
 | `GPIO_PORT_D` | PD | `0x40011400` | `RCC_PERIPH_GPIOD` |
@@ -62,7 +62,7 @@ AFIO_SetXxxRemap(remap_value);
 **Pin enum values** — the same set applies to all three ports:
 
 | Enum | Pin number |
-|---|---|
+| --- | --- |
 | `GPIO_PIN_0` | Pin 0 |
 | `GPIO_PIN_1` | Pin 1 |
 | `GPIO_PIN_2` | Pin 2 |
@@ -79,7 +79,7 @@ AFIO_SetXxxRemap(remap_value);
 ### Input modes
 
 | `GPIO_PinMode_t` value | Description | When to use |
-|---|---|---|
+| --- | --- | --- |
 | `GPIO_MODE_IN_ANALOG` | Analog input — pin disconnected from digital logic | ADC inputs, OPA inputs |
 | `GPIO_MODE_IN_FLOATING` | Floating input — no pull resistor | USART RX, SPI MISO master, timer ETR/BKIN/capture, EXTI |
 | `GPIO_MODE_IN_PULLDOWN` | Digital input with internal pull-down to GND | Button wired to VCC, idle-high signals |
@@ -107,7 +107,7 @@ Push-pull drives the pin actively to both VCC and GND.
 Use for LEDs, logic outputs, and most digital signals.
 
 | `GPIO_PinMode_t` value | Speed | Description |
-|---|---|---|
+| --- | --- | --- |
 | `GPIO_MODE_OUT_PP_2` | 2 MHz max | Lowest power, slowest edges |
 | `GPIO_MODE_OUT_PP_10` | 10 MHz max | General purpose |
 | `GPIO_MODE_OUT_PP_50` | 50 MHz max | High speed signals |
@@ -131,7 +131,7 @@ external pull-up resistor is present. Required for I2C and for
 wired-AND bus topologies.
 
 | `GPIO_PinMode_t` value | Speed | Description |
-|---|---|---|
+| --- | --- | --- |
 | `GPIO_MODE_OUT_OD_2` | 2 MHz max | Open-drain, low power |
 | `GPIO_MODE_OUT_OD_10` | 10 MHz max | Open-drain, general |
 | `GPIO_MODE_OUT_OD_50` | 50 MHz max | Open-drain, high speed |
@@ -153,7 +153,7 @@ Used for peripheral signals that drive the line (USART TX, SPI MOSI
 master, SPI SCK master, TIM output compare, MCO).
 
 | `GPIO_PinMode_t` value | Speed | Description |
-|---|---|---|
+| --- | --- | --- |
 | `GPIO_MODE_AF_PP_2` | 2 MHz max | AF push-pull, low power |
 | `GPIO_MODE_AF_PP_10` | 10 MHz max | AF push-pull, general |
 | `GPIO_MODE_AF_PP_50` | 50 MHz max | AF push-pull, high speed |
@@ -173,7 +173,7 @@ Used for I2C (which requires open-drain by the I2C standard) and
 for USART TX in half-duplex synchronous mode.
 
 | `GPIO_PinMode_t` value | Speed | Description |
-|---|---|---|
+| --- | --- | --- |
 | `GPIO_MODE_AF_OD_2` | 2 MHz max | AF open-drain, low power |
 | `GPIO_MODE_AF_OD_10` | 10 MHz max | AF open-drain, general |
 | `GPIO_MODE_AF_OD_50` | 50 MHz max | AF open-drain, high speed |
@@ -191,7 +191,7 @@ GPIO_SetPinMode(GPIO_PORT_C, GPIO_PIN_1, GPIO_MODE_AF_OD_50);
 ### Speed selection guide
 
 | Speed | Use when |
-|---|---|
+| --- | --- |
 | `_2` (2MHz) | LEDs, slow control signals, I2C at 100kHz, power saving |
 | `_10` (10MHz) | UART up to ~1Mbaud, I2C at 400kHz, general AF |
 | `_50` (50MHz) | SPI, high-speed UART, timer PWM, any signal > 4MHz |
@@ -358,7 +358,7 @@ rather than raw port/pin values.
 **GPIO configuration required (from manual Table 7-3):**
 
 | USART pin | Mode | Required GPIO mode |
-|---|---|---|
+| --- | --- | --- |
 | TX | Full-duplex | `GPIO_MODE_AF_PP_50` |
 | TX | Half-duplex synchronous | `GPIO_MODE_AF_OD_50` |
 | RX | Full-duplex | `GPIO_MODE_IN_FLOATING` or `GPIO_MODE_IN_PULLUP` |
@@ -371,7 +371,7 @@ rather than raw port/pin values.
 `AFIO_SetUsart1Remap(0U)` — this is the reset default, call is optional.
 
 | Function | Port/Pin | Constant (port) | Constant (pin) |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | CK | PD4 | `USART1_RM00_CK_PORT` | `USART1_RM00_CK_PIN` |
 | TX | PD5 | `USART1_RM00_TX_PORT` | `USART1_RM00_TX_PIN` |
 | RX | PD6 | `USART1_RM00_RX_PORT` | `USART1_RM00_RX_PIN` |
@@ -392,7 +392,7 @@ GPIO_SetPinMode(USART1_RM00_RX_PORT, USART1_RM00_RX_PIN, GPIO_MODE_IN_FLOATING);
 `AFIO_SetUsart1Remap(1U)`
 
 | Function | Port/Pin | Constant (port) | Constant (pin) |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | CK | PD7 | `USART1_RM01_CK_PORT` | `USART1_RM01_CK_PIN` |
 | TX | PD0 | `USART1_RM01_TX_PORT` | `USART1_RM01_TX_PIN` |
 | RX | PD1 | `USART1_RM01_RX_PORT` | `USART1_RM01_RX_PIN` |
@@ -414,7 +414,7 @@ GPIO_SetPinMode(USART1_RM01_RX_PORT, USART1_RM01_RX_PIN, GPIO_MODE_IN_FLOATING);
 `AFIO_SetUsart1Remap(2U)`
 
 | Function | Port/Pin | Constant (port) | Constant (pin) |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | CK | PD7 | `USART1_RM10_CK_PORT` | `USART1_RM10_CK_PIN` |
 | TX | PD6 | `USART1_RM10_TX_PORT` | `USART1_RM10_TX_PIN` |
 | RX | PD5 | `USART1_RM10_RX_PORT` | `USART1_RM10_RX_PIN` |
@@ -436,7 +436,7 @@ GPIO_SetPinMode(USART1_RM10_RX_PORT, USART1_RM10_RX_PIN, GPIO_MODE_IN_FLOATING);
 `AFIO_SetUsart1Remap(3U)`
 
 | Function | Port/Pin | Constant (port) | Constant (pin) |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | CK | PC5 | `USART1_RM11_CK_PORT` | `USART1_RM11_CK_PIN` |
 | TX | PC0 | `USART1_RM11_TX_PORT` | `USART1_RM11_TX_PIN` |
 | RX | PC1 | `USART1_RM11_RX_PORT` | `USART1_RM11_RX_PIN` |
@@ -460,7 +460,7 @@ GPIO_SetPinMode(USART1_RM11_RX_PORT, USART1_RM11_RX_PIN, GPIO_MODE_IN_FLOATING);
 **GPIO configuration required (from manual Table 7-4):**
 
 | SPI pin | Mode | Required GPIO mode |
-|---|---|---|
+| --- | --- | --- |
 | SCK master | Any | `GPIO_MODE_AF_PP_50` |
 | SCK slave | Any | `GPIO_MODE_IN_FLOATING` |
 | MOSI master full-duplex | Any | `GPIO_MODE_AF_PP_50` |
@@ -476,7 +476,7 @@ GPIO_SetPinMode(USART1_RM11_RX_PORT, USART1_RM11_RX_PIN, GPIO_MODE_IN_FLOATING);
 `AFIO_SetSpi1Remap(0U)`
 
 | Function | Port/Pin | Constant (port) | Constant (pin) |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | NSS | PC1 | `SPI1_RM0_NSS_PORT` | `SPI1_RM0_NSS_PIN` |
 | SCK | PC5 | `SPI1_RM0_SCK_PORT` | `SPI1_RM0_SCK_PIN` |
 | MISO | PC7 | `SPI1_RM0_MISO_PORT` | `SPI1_RM0_MISO_PIN` |
@@ -501,7 +501,7 @@ GPIO_SetPin(GPIO_PORT_C, GPIO_PIN_1);   /* CS idle high */
 `AFIO_SetSpi1Remap(1U)` — only NSS changes, SCK/MISO/MOSI stay the same.
 
 | Function | Port/Pin | Constant (port) | Constant (pin) |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | NSS | PC0 | `SPI1_RM1_NSS_PORT` | `SPI1_RM1_NSS_PIN` |
 | SCK | PC5 | `SPI1_RM1_SCK_PORT` | `SPI1_RM1_SCK_PIN` |
 | MISO | PC7 | `SPI1_RM1_MISO_PORT` | `SPI1_RM1_MISO_PIN` |
@@ -514,7 +514,7 @@ GPIO_SetPin(GPIO_PORT_C, GPIO_PIN_1);   /* CS idle high */
 **GPIO configuration required (from manual Table 7-5):**
 
 | I2C pin | Required GPIO mode | Note |
-|---|---|---|
+| --- | --- | --- |
 | SCL | `GPIO_MODE_AF_OD_50` | External pull-up resistor required on board |
 | SDA | `GPIO_MODE_AF_OD_50` | External pull-up resistor required on board |
 
@@ -527,7 +527,7 @@ GPIO_SetPin(GPIO_PORT_C, GPIO_PIN_1);   /* CS idle high */
 `AFIO_SetI2c1Remap(0U)`
 
 | Function | Port/Pin | Constant (port) | Constant (pin) |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | SCL | PC2 | `I2C1_RM00_SCL_PORT` | `I2C1_RM00_SCL_PIN` |
 | SDA | PC1 | `I2C1_RM00_SDA_PORT` | `I2C1_RM00_SDA_PIN` |
 
@@ -545,7 +545,7 @@ GPIO_SetPinMode(I2C1_RM00_SDA_PORT, I2C1_RM00_SDA_PIN, GPIO_MODE_AF_OD_50);
 `AFIO_SetI2c1Remap(1U)`
 
 | Function | Port/Pin | Constant (port) | Constant (pin) |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | SCL | PD1 | `I2C1_RM01_SCL_PORT` | `I2C1_RM01_SCL_PIN` |
 | SDA | PD0 | `I2C1_RM01_SDA_PORT` | `I2C1_RM01_SDA_PIN` |
 
@@ -564,7 +564,7 @@ GPIO_SetPinMode(I2C1_RM01_SDA_PORT, I2C1_RM01_SDA_PIN, GPIO_MODE_AF_OD_50);
 `AFIO_SetI2c1Remap(2U)`
 
 | Function | Port/Pin | Constant (port) | Constant (pin) |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | SCL | PC5 | `I2C1_RM1X_SCL_PORT` | `I2C1_RM1X_SCL_PIN` |
 | SDA | PC6 | `I2C1_RM1X_SDA_PORT` | `I2C1_RM1X_SDA_PIN` |
 
@@ -575,7 +575,7 @@ GPIO_SetPinMode(I2C1_RM01_SDA_PORT, I2C1_RM01_SDA_PIN, GPIO_MODE_AF_OD_50);
 **GPIO configuration required (from manual Table 7-1):**
 
 | TIM1 pin | Configuration | Required GPIO mode |
-|---|---|---|
+| --- | --- | --- |
 | CHx | Input capture | `GPIO_MODE_IN_FLOATING` |
 | CHx | Output compare | `GPIO_MODE_AF_PP_50` |
 | CHxN | Complementary output | `GPIO_MODE_AF_PP_50` |
@@ -587,7 +587,7 @@ GPIO_SetPinMode(I2C1_RM01_SDA_PORT, I2C1_RM01_SDA_PIN, GPIO_MODE_AF_OD_50);
 `AFIO_SetTim1Remap(0U)`
 
 | Function | Port/Pin | Constant (port) | Constant (pin) |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | ETR | PC5 | `TIM1_RM00_ETR_PORT` | `TIM1_RM00_ETR_PIN` |
 | CH1 | PD2 | `TIM1_RM00_CH1_PORT` | `TIM1_RM00_CH1_PIN` |
 | CH2 | PA1 | `TIM1_RM00_CH2_PORT` | `TIM1_RM00_CH2_PIN` |
@@ -611,7 +611,7 @@ GPIO_SetPinMode(TIM1_RM00_CH1_PORT, TIM1_RM00_CH1_PIN, GPIO_MODE_AF_PP_50);
 `AFIO_SetTim1Remap(1U)`
 
 | Function | Port/Pin | Constant (port) | Constant (pin) |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | ETR | PC5 | `TIM1_RM01_ETR_PORT` | `TIM1_RM01_ETR_PIN` |
 | CH1 | PC6 | `TIM1_RM01_CH1_PORT` | `TIM1_RM01_CH1_PIN` |
 | CH2 | PC7 | `TIM1_RM01_CH2_PORT` | `TIM1_RM01_CH2_PIN` |
@@ -627,7 +627,7 @@ GPIO_SetPinMode(TIM1_RM00_CH1_PORT, TIM1_RM00_CH1_PIN, GPIO_MODE_AF_PP_50);
 `AFIO_SetTim1Remap(2U)`
 
 | Function | Port/Pin | Constant (port) | Constant (pin) |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | ETR | PD4 | `TIM1_RM10_ETR_PORT` | `TIM1_RM10_ETR_PIN` |
 | CH1 | PD2 | `TIM1_RM10_CH1_PORT` | `TIM1_RM10_CH1_PIN` |
 | CH2 | PA1 | `TIM1_RM10_CH2_PORT` | `TIM1_RM10_CH2_PIN` |
@@ -643,7 +643,7 @@ GPIO_SetPinMode(TIM1_RM00_CH1_PORT, TIM1_RM00_CH1_PIN, GPIO_MODE_AF_PP_50);
 `AFIO_SetTim1Remap(3U)`
 
 | Function | Port/Pin | Constant (port) | Constant (pin) |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | ETR | PC2 | `TIM1_RM11_ETR_PORT` | `TIM1_RM11_ETR_PIN` |
 | CH1 | PC4 | `TIM1_RM11_CH1_PORT` | `TIM1_RM11_CH1_PIN` |
 | CH2 | PC7 | `TIM1_RM11_CH2_PORT` | `TIM1_RM11_CH2_PIN` |
@@ -661,7 +661,7 @@ GPIO_SetPinMode(TIM1_RM00_CH1_PORT, TIM1_RM00_CH1_PIN, GPIO_MODE_AF_PP_50);
 **GPIO configuration required (from manual Table 7-2):**
 
 | TIM2 pin | Configuration | Required GPIO mode |
-|---|---|---|
+| --- | --- | --- |
 | CHx | Input capture | `GPIO_MODE_IN_FLOATING` |
 | CHx | Output compare | `GPIO_MODE_AF_PP_50` |
 | ETR | External trigger | `GPIO_MODE_IN_FLOATING` |
@@ -671,7 +671,7 @@ GPIO_SetPinMode(TIM1_RM00_CH1_PORT, TIM1_RM00_CH1_PIN, GPIO_MODE_AF_PP_50);
 `AFIO_SetTim2Remap(0U)`
 
 | Function | Port/Pin | Constant (port) | Constant (pin) |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | ETR/CH1 | PD4 | `TIM2_RM00_ETR_PORT` | `TIM2_RM00_ETR_PIN` |
 | CH2 | PD3 | `TIM2_RM00_CH2_PORT` | `TIM2_RM00_CH2_PIN` |
 | CH3 | PC0 | `TIM2_RM00_CH3_PORT` | `TIM2_RM00_CH3_PIN` |
@@ -692,7 +692,7 @@ GPIO_SetPinMode(TIM2_RM00_CH2_PORT, TIM2_RM00_CH2_PIN, GPIO_MODE_AF_PP_50);
 `AFIO_SetTim2Remap(1U)`
 
 | Function | Port/Pin | Constant (port) | Constant (pin) |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | ETR/CH1 | PC5 | `TIM2_RM01_ETR_PORT` | `TIM2_RM01_ETR_PIN` |
 | CH2 | PC2 | `TIM2_RM01_CH2_PORT` | `TIM2_RM01_CH2_PIN` |
 | CH3 | PD2 | `TIM2_RM01_CH3_PORT` | `TIM2_RM01_CH3_PIN` |
@@ -703,7 +703,7 @@ GPIO_SetPinMode(TIM2_RM00_CH2_PORT, TIM2_RM00_CH2_PIN, GPIO_MODE_AF_PP_50);
 `AFIO_SetTim2Remap(2U)`
 
 | Function | Port/Pin | Constant (port) | Constant (pin) |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | ETR/CH1 | PC1 | `TIM2_RM10_ETR_PORT` | `TIM2_RM10_ETR_PIN` |
 | CH2 | PD3 | `TIM2_RM10_CH2_PORT` | `TIM2_RM10_CH2_PIN` |
 | CH3 | PC0 | `TIM2_RM10_CH3_PORT` | `TIM2_RM10_CH3_PIN` |
@@ -714,7 +714,7 @@ GPIO_SetPinMode(TIM2_RM00_CH2_PORT, TIM2_RM00_CH2_PIN, GPIO_MODE_AF_PP_50);
 `AFIO_SetTim2Remap(3U)`
 
 | Function | Port/Pin | Constant (port) | Constant (pin) |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | ETR/CH1 | PC1 | `TIM2_RM11_ETR_PORT` | `TIM2_RM11_ETR_PIN` |
 | CH2 | PC7 | `TIM2_RM11_CH2_PORT` | `TIM2_RM11_CH2_PIN` |
 | CH3 | PD6 | `TIM2_RM11_CH3_PORT` | `TIM2_RM11_CH3_PIN` |

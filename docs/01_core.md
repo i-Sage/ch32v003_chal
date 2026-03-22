@@ -12,7 +12,7 @@ Before using any function in this header it helps to have the full
 picture in your head. There are three separate layers that must all
 agree before an interrupt reaches your code:
 
-```
+```text
 Layer 1 — Peripheral level
           Each peripheral has its own interrupt enable bit.
           e.g. USART1->CTLR1 bit RXNEIE
@@ -43,7 +43,7 @@ Register). CSRs are separate from the normal integer registers
 You cannot access `mstatus` with normal load/store instructions.
 RISC-V has dedicated CSR instructions:
 
-```
+```text
 csrr  rd, csr      — read CSR into register rd
 csrw  csr, rs      — write register rs into CSR
 csrsi csr, imm     — set   specific bits in CSR (immediate mask)
@@ -53,7 +53,7 @@ csrrci rd, csr, imm — read CSR into rd, then clear bits (atomic)
 
 Bit 3 of `mstatus` is called **MIE** (Machine Interrupt Enable):
 
-```
+```text
 mstatus bit 3 = 0  →  no interrupt can reach the CPU, period
 mstatus bit 3 = 1  →  interrupts can reach the CPU (if PFIC allows)
 ```
@@ -165,6 +165,7 @@ IRQ_CRITICAL_END();
 ```
 
 **Rules for critical sections:**
+
 - Keep them as short as possible
 - Never call blocking functions inside (no delays, no polling loops)
 - Never call `SysTick_Delay_Ms` inside (it may depend on an interrupt)
@@ -272,6 +273,7 @@ for (;;)
 ```
 
 When an interrupt fires:
+
 1. CPU wakes from WFI
 2. Jumps to the ISR
 3. ISR runs
