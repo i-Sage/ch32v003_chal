@@ -25,3 +25,6 @@ build.ninja
 *.swo
 *~
 .DS_Store
+
+dev_notes.md
+:w

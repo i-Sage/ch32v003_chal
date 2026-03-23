@@ -107,34 +107,6 @@ self-contained.
 
 ---
 
-## Versioning policy
-
-This project uses **Semantic Versioning** (`MAJOR.MINOR.PATCH`) with a pre-1.0
-policy while the API is still evolving.
-
-- `0.1.x` (patch): bug fixes, documentation updates, and internal cleanups with
-no intentional public API break.
-- `0.x.0` (minor): new modules/features or behavior changes, including API
-adjustments during early development.
-- `1.0.0` (major): first stable release where public API compatibility is a
-commitment.
-
-Release workflow:
-
-1. Update `VERSION` in `CMakeLists.txt`.
-2. Move items from `Unreleased` into a dated section in `CHANGELOG.md`.
-3. Commit release metadata.
-4. Create an annotated tag, for example `v0.1.0`.
-
-Example tag commands:
-
-```bash
-git tag -a v0.1.0 -m "Release v0.1.0"
-git push origin v0.1.0
-```
-
----
-
 ## Documentation
 
 Full API reference is in `docs/`. Each peripheral has its own doc file, it covers every function,
